@@ -1,26 +1,17 @@
-function combine(inp1, inp2) {
-    var result;
-    if (typeof inp1 === 'number' && typeof inp2 === 'number') {
-        result = inp1 + inp2;
-    }
-    else {
-        result = inp1.toString() + inp2.toString();
-    }
-    return result;
+function add(n1, n2) {
+    return n1 + n2;
 }
-var combineAges = combine(27, 30);
-console.log(combineAges);
-var combinedNames = combine('Anna', 'Maria');
-console.log(combinedNames);
-var u1 = { name: 'Andrew', age: 30 };
-console.log(u1.name);
-function greet(user) {
-    console.log('Hi, I am ' + user.name);
+// below is the syntax for explicitly stating a return value in TS
+// not often neeeded as TS can infer 
+function printResult(num) {
+    console.log('Result: ' + num);
 }
-function isOlder(user, checkAge) {
-    if (checkAge > user.age) {
-        console.log('Too young');
-    }
-}
-greet(u1);
-isOlder(u1, 35);
+printResult(add(5, 12));
+// below specifics that this variable should return type of function, and more specifically, 
+//a function that accepts two parameters, both numbers, and returns a number 
+var combineValues;
+//valid
+combineValues = add;
+//not valid 
+// combineValues = printResult; 
+console.log(combineValues(8, 8));

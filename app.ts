@@ -1,37 +1,22 @@
-// type Alias using a union type 
-type Combineable = number | string;
-
-function combine(inp1: Combineable, inp2: Combineable){
-    let result; 
-    if (typeof inp1 === 'number' && typeof inp2 === 'number') {
-        result = inp1 + inp2;
-    } else {
-        result = inp1.toString() + inp2.toString();
-    }
-    return result;
+function add(n1: number, n2: number) {
+    return n1 + n2; 
 }
 
-const combineAges = combine(27, 30);
-console.log(combineAges);
-
-const combinedNames = combine('Anna', 'Maria')
-console.log(combinedNames);
-
-// more with Type Alias 
-
-type User = {name: string; age: number};
-const u1: User = {name: 'Andrew', age: 30};
-console.log(u1.name)
-
-function greet(user: User){
-    console.log('Hi, I am ' + user.name)
+// below is the syntax for explicitly stating a return value in TS
+// not often neeeded as TS can infer 
+function printResult(num: number): void{
+    console.log('Result: ' + num);
 }
 
-function isOlder(user: User, checkAge: number){
-    if(checkAge > user.age) {
-        console.log('Too young');
-    } 
-}
+printResult(add(5,12)); 
 
-greet(u1); 
-isOlder(u1, 35);
+// below specifics that this variable should return type of function, and more specifically, 
+//a function that accepts two parameters, both numbers, and returns a number 
+let combineValues: (a: number, b: number) => number; 
+
+//valid
+combineValues = add; 
+//not valid 
+// combineValues = printResult; 
+
+console.log(combineValues(8,8));
