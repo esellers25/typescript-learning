@@ -1,17 +1,11 @@
-function add(n1, n2) {
-    return n1 + n2;
+var userInput;
+var userName;
+userInput = 5;
+userInput = 'Erin';
+if (typeof userInput === 'string') {
+    userName = userInput;
 }
-// below is the syntax for explicitly stating a return value in TS
-// not often neeeded as TS can infer 
-function printResult(num) {
-    console.log('Result: ' + num);
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
 }
-printResult(add(5, 12));
-// below specifics that this variable should return type of function, and more specifically, 
-//a function that accepts two parameters, both numbers, and returns a number 
-var combineValues;
-//valid
-combineValues = add;
-//not valid 
-// combineValues = printResult; 
-console.log(combineValues(8, 8));
+generateError('Invalid code!', 500);
